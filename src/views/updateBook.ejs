@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title><%=title%></title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="/css/styles.css" rel="stylesheet">
+	</head>
+	<body>
+<header class="navbar navbar-bright navbar-fixed-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        <% for(i=0;i<nav.length;i++) { %>
+        <li>
+          <a href="<%= nav[i].link %>"><%= nav[i].name %></a>
+        </li>
+        <% }%>
+      </ul>
+      <ul class="nav navbar-right navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
+          <ul class="dropdown-menu" style="padding:12px;">
+            <form class="form-inline">
+              <button type="submit" class="btn btn-default pull-right"><i class="glyphicon glyphicon-search"></i></button><input type="text" class="form-control pull-left" placeholder="Search">
+            </form>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div id="masthead">  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <h1>Books
+          <p class="lead"></p>
+        </h1>
+      </div>
+   
+    </div> 
+  </div><!-- /cont -->
+  
+  <div class="container">
+    <div class="row">
+    
+    </div> 
+  </div><!-- /cont -->
+  
+</div>
+
+
+<div class="container">
+  <div class="row">
+    
+    <div class="col-md-12"> 
+      
+      <div class="panel-form3">
+        <div class="panel-body">
+          
+          
+          
+          <!--/stories-->
+          
+          <div class="form-body">
+            <h1> Update Book</h1> <br>
+            <form method="post"  action="/adminhome/updateB/<%=book._id%>" onsubmit="return formValidate()" enctype="multipart/form-data" >
+            <label> Book Title: </label><br>
+            <input type="text" id="title" value="<%=book.title%>" class="form-control" name="title">
+            <span id="atitle_err"></span><br>
+            <label> Author Name: </label><br>
+            <input type="text" id="name" value="<%=book.author%>" class="form-control" name="author">
+            <span id="aname_err"></span><br>
+            <label> Genre: </label><br>
+            <input type="text" id="genre" value="<%=book.genre%>" class="form-control" name="genre">
+            <span id="agenre_err"></span><br>
+            <label> Change Image: </label><br>
+            <input type="file" id="file" name="image"> <br>
+            <img src="/images/<%=book.image%>" style="width:100px;height: 100px;" >
+            <span id="aimg_err"></span><br><br>
+            <input type="submit" value="Update Book" class="btn btn-dark">
+           </form>
+         </div>       
+          <!--/stories-->        
+          
+        </div>
+      </div>
+                                                                                       
+	                                                
+                                                      
+   	</div><!--/col-12-->
+  </div>
+</div>
+      
+	<!-- script references -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        function formValidate(){
+  
+         let name=document.getElementById("name");
+         let nameerr=document.getElementById("aname_err");
+         let genre=document.getElementById("genre");
+         let gerr=document.getElementById("agenre_err");
+         let title=document.getElementById("title");
+         let titleerr=document.getElementById("atitle_err");
+         let img=document.getElementById("file");
+         let imgerr=document.getElementById("aimg_err");
+  
+         let flag=1;
+  
+         if (name.value.trim() ===""){
+          nameerr.innerHTML=" **Field cannot be empty";
+           flag=0;
+         }
+  
+         if (genre.value.trim() ===""){
+          gerr.innerHTML=" **Field cannot be empty";
+           flag=0;
+         }
+  
+         if (title.value.trim() ===""){
+          titleerr.innerHTML=" **Field cannot be empty";
+           flag=0;
+         }
+  
+         if(img.value === ""){
+          imgerr.innerHTML=" Please upload image";
+          flag=0;
+         }
+  
+         if(flag==1)
+         {
+          alert("Successfully Updated Book!!");
+           return true;
+         }
+         else {       
+           return false;
+        }
+      }
+     </script>
+    
+	</body>
+</html>
